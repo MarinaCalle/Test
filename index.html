@@ -1,0 +1,137 @@
+<body></body>
+<script src="/three.js"></script>
+<script>
+  // The "scene" is where stuff in our game will happen:
+  var scene = new THREE.Scene();
+  var flat = {flatShading: true};
+  var light = new THREE.AmbientLight('white', 0.8);
+  scene.add(light);
+
+  // The "camera" is what sees the stuff:
+  var aspectRatio = window.innerWidth / window.innerHeight;
+  var camera = new THREE.PerspectiveCamera(75, aspectRatio, 1, 10000);
+  camera.position.z = 500;
+  scene.add(camera);
+
+  // The "renderer" draws what the camera sees onto the screen:
+  var renderer = new THREE.WebGLRenderer({antialias: true});
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  // ******** START CODING ON THE NEXT LINE ********
+    //segunda luz
+light2 = new THREE.DirectionalLight('white',1)
+light2.position.set(100,200,10);
+scene.add(light2);
+
+
+// the tree
+
+const loader = new THREE.TextureLoader();
+const material = new THREE.MeshPhongMaterial({color:'green'});
+const tronco = new THREE.MeshPhongMaterial({color: 'rgb( 124, 101, 80)'});
+const marron = new THREE.MeshPhongMaterial({color: 'rgb(59, 43, 30 )'});
+const piedra = new THREE.MeshPhongMaterial({color: 'rgb(227, 210, 189 )'});
+const gris = new THREE.MeshPhongMaterial({color: 'rgb(98, 144, 70 )'});
+const orange = new THREE.MeshPhongMaterial({color: 'rgb(255, 133, 4 )'});
+var shape = new THREE.PlaneGeometry(50,50,90,50);
+var suelo = new THREE.PlaneGeometry(300,200,90,50);
+var cover = new THREE.MeshNormalMaterial(flat);
+var cara1 = new THREE.Mesh(shape, piedra);
+var cara2 = new THREE.Mesh(shape, piedra);
+var cara3 = new THREE.Mesh(shape, piedra);
+var cara4 = new THREE.Mesh(shape, piedra);
+var base = new THREE.Mesh(suelo, gris);
+var tierra = new THREE.Mesh(shape, marron);
+
+var shape1 = new THREE.CylinderGeometry(7,7,150,100);
+var cover = new THREE.MeshNormalMaterial(flat);
+var cilindro = new THREE.Mesh(shape1, tronco);
+
+var shape2 = new THREE.SphereGeometry(30,10,7);
+var hojas = new THREE.Mesh(shape2, material);
+var hojas1 = new THREE.Mesh(shape2, material);
+var hojas2 = new THREE.Mesh(shape2, material);
+var hojas3 = new THREE.Mesh(shape2, material);
+var hojas4 = new THREE.Mesh(shape2, material);
+
+var shape3 = new THREE.SphereGeometry(3,100,100);
+var fruta = new THREE.Mesh(shape3, orange);
+var fruta1 = new THREE.Mesh(shape3, orange);
+var fruta2 = new THREE.Mesh(shape3, orange);
+var fruta3 = new THREE.Mesh(shape3, orange);
+var fruta4 = new THREE.Mesh(shape3, orange);
+var fruta5 = new THREE.Mesh(shape3, orange);
+var fruta6 = new THREE.Mesh(shape3, orange);
+var fruta7 = new THREE.Mesh(shape3, orange);
+
+scene.add(cara1);
+scene.add(cara2);
+scene.add(cara3);
+scene.add(cara4);
+scene.add(base);
+scene.add(cilindro);
+scene.add(tierra);
+
+scene.add(hojas);
+scene.add(hojas1);
+scene.add(hojas2);
+scene.add(hojas3);
+scene.add(hojas4);
+
+
+scene.add(fruta);
+scene.add(fruta1);
+scene.add(fruta2);
+scene.add(fruta3);
+scene.add(fruta4);
+scene.add(fruta5);
+scene.add(fruta6);
+scene.add(fruta7);
+
+
+
+cara1.rotation.set(0,0,0);
+cara2.rotation.set(0,Math.PI/2,0);
+cara3.rotation.set(0,Math.PI/2,0);
+cara4.rotation.set(0,0,0);
+base.rotation.set(-Math.PI/2,0,0);
+tierra.rotation.set(-Math.PI/2,0,0);
+
+cara2.position.set(25,0,25);
+cara3.position.set(-25,0,25);
+cara4.position.set(0,0,50);
+base.position.set(0,-25,25);
+tierra.position.set(0,15,25);
+cilindro.position.set(0,50,25);
+
+
+
+hojas.position.set(0,124,25);
+hojas1.position.set(0,110,40);
+hojas2.position.set(0,110,6);
+hojas3.position.set(15,110,25);
+hojas4.position.set(-17,110,25);
+
+
+fruta.position.set(0,140,47);
+fruta1.position.set(0,105,67);
+fruta2.position.set(0,110,40);
+fruta3.position.set(42,100,25);
+fruta4.position.set(-40,125,25);
+fruta5.position.set(30,-22,-15);
+fruta6.position.set(43,-22,30);
+fruta7.position.set(-40,-22,50);
+
+
+
+
+camera.position.set(100,150, 200);
+camera.lookAt(cara1.position);
+
+
+
+
+  // Now, show what the camera sees on the screen:
+  renderer.render(scene, camera);
+</script>
